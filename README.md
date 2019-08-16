@@ -1,7 +1,7 @@
 # docker-larvel-mix
 This setup contains a docker installation tested for Laravel 5.5 + Laravel mix.
 
-##Containers
+## Containers
 
 - app container
 - mysql container
@@ -11,7 +11,7 @@ This setup contains a docker installation tested for Laravel 5.5 + Laravel mix.
 
 Node container is running in the background to poll the css and js files.
 
-##Usage
+## Usage
 
 To start this setup `docker-compose up -d` this starts all the containers. For Linux and Mac be sure the files in docker/init-scripts have rights to execute. This rights need to be set on the host.
 
