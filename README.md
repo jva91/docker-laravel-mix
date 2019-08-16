@@ -13,7 +13,7 @@ Node container is running in the background to poll the css and js files.
 
 ## Usage
 
-To start this setup `docker-compose up -d` this starts all the containers. For Linux and Mac be sure the files in docker/init-scripts have rights to execute. This rights need to be set on the host.
+To start this setup `docker-compose up -d`, this starts all the containers. For Linux and Mac be sure the files in docker/init-scripts have rights to execute. This rights need to be set on the host.
 
 The app and node container contains a entrypoint, this calls an bash script to startup the container.
 
