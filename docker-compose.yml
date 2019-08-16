@@ -1,0 +1,54 @@
+version: "3"
+services:
+  app:
+    image: www
+    container_name: www
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    env_file:
+      - docker/.docker.env
+    volumes:
+      - ./htdocs:/var/www/html
+      - ./docker/init-scripts/:/init-scripts/
+    ports:
+      - 8080:80
+    depends_on:
+      - 'mysql'
+    entrypoint:
+      - /init-scripts/apache_start.sh
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: YOURDATABASE
+      MYSQL_ROOT_PASSWORD: ROOTPASS
+      MYSQL_USER: USER
+      MYSQL_PASSWORD: PASS
+    ports:
+      - 13306:3306
+  phpmyadmin:
+    container_name: 'phpmyadmin'
+    image: 'phpmyadmin/phpmyadmin:latest'
+    ports:
+      - '8081:80'
+    environment:
+      - 'PMA_HOST=docker-mysql'
+    depends_on:
+      - 'mysql'
+  node:
+    image: node:10-alpine
+    container_name: node
+    working_dir: /usr/src/app
+    volumes:
+      - ./htdocs:/usr/src/app
+      - ./docker/init-scripts/:/init-scripts/
+    entrypoint:
+      - /init-scripts/node_start.sh
+    depends_on:
+      - 'app'
+volumes:
+  mysql:
+    driver: "local"
