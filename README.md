@@ -1,4 +1,4 @@
-# docker-larvel-mix
+# docker-laravel-mix
 This setup contains a docker installation tested for Laravel 5.5 + Laravel mix.
 
 ## Containers
