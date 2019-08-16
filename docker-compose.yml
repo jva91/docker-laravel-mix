@@ -35,7 +35,7 @@ services:
     ports:
       - '8081:80'
     environment:
-      - 'PMA_HOST=docker-mysql'
+      - 'PMA_HOST=mysql'
     depends_on:
       - 'mysql'
   node:
